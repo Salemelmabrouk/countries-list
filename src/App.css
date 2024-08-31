@@ -1,6 +1,12 @@
 /*app.css*/
-@import 'bootswatch/dist/litera/bootstrap.min.css';
+@import 'bootswatch/dist/lux/bootstrap.min.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
   
+
+.hero-container {
+  min-height: 6rem;
+  background-color: var(--white);
+  box-shadow: 0 0 5px var(--dark-grey); 
+}

@@ -1,23 +1,76 @@
 const NavBar = () => {
   return (
-    <div>
-      <div className="bg-gradient-to-r from-green-600 to-orange-500 text-white text-center py-8">
-        <div className="container mx-auto">
-          <h1 className="text-3xl font-bold">Country list with Flags </h1>
-          <p className="text-lg mt-4">
-            A curated collection of all country flags in SVG — plus the CSS for easier integration.
-          </p>
-           
-          <pre className="bg-black bg-opacity-30 p-2 mx-auto mt-3 rounded max-w-sm">
-            yarn add flag-icons
-          </pre>
-          <p className="mt-4">For more instructions, check out on GitHub.</p>
-          
+    <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="#">Navbar</a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor02"
+          aria-controls="navbarColor02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarColor02">
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item">
+              <a className="nav-link active" href="#">
+                Home <span className="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Features</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Pricing</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">About</a>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <div className="dropdown-menu">
+                <a className="dropdown-item" href="#">
+                  Action
+                </a>
+                <a className="dropdown-item" href="#">
+                  Another action
+                </a>
+                <a className="dropdown-item" href="#">
+                  Something else here
+                </a>
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="#">
+                  Separated link
+                </a>
+              </div>
+            </li>
+          </ul>
+          <form className="d-flex">
+            <input
+              className="form-control me-sm-2"
+              type="search"
+              placeholder="Search"
+            />
+            <button className="btn btn-secondary my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
         </div>
       </div>
-
-       
-    </div>
+    </nav>
   );
 };
 

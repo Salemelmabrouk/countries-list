@@ -62,7 +62,7 @@ const Countries = () => {
           />
           {search && (
             <button
-              className="absolute inset-y-0 right-[136px] flex items-center px-3"
+              className="absolute inset-y-0 right-[146px] flex items-center px-3"
               onClick={handleClear}
             >
               <FaTimes className="text-gray-400" />

@@ -1,5 +1,6 @@
 /*index.css*/
-
+@import 'bootswatch/dist/lux/bootstrap.min.css';
+ 
 @import 'bootswatch/dist/litera/bootstrap.min.css';
 @tailwind base;
 @tailwind components;
@@ -59,31 +60,9 @@
       margin-bottom: 0.5rem;
     }
     
-    .country-info p {
-      font-weight: 600;
-      margin: 0.5rem 0;
-    }
+ 
+
+
+
+
     
-    @media screen and (min-width: 48em) {
-      .cards-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-    }
-    
-    @media screen and (min-width: 75em) {
-      .cards-container {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
-      .country-card {
-        margin-bottom: 1rem;
-      }
-    }
-    
-    @media screen and (min-width: 93.75em) {
-      .cards-container {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
