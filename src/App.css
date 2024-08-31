@@ -1,0 +1,6 @@
+/*app.css*/
+@import 'bootswatch/dist/litera/bootstrap.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  
