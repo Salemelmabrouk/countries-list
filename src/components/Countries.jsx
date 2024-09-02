@@ -72,24 +72,39 @@ const Countries = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex flex-col justify-between mb-4 space-y-2">
+      <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold">Country List</h2>
-        <div className="relative w-full flex">
-          <input
-            type="text"
-            placeholder="Search countries..."
-            className="border border-gray-300 p-2 rounded pr-10 w-full"
-            value={search}
-            onChange={handleSearchChange}
-          />
-          {search && (
-            <button
-              className="absolute inset-y-0 right-28 flex items-center px-3"
-              onClick={handleClear}
-            >
-              <FaTimes className="text-gray-400" />
-            </button>
-          )}
+        <div className="relative w-full max-w-lg flex items-center">
+          <div className="relative flex-grow">
+            <input
+              type="text"
+              placeholder="Search countries..."
+              className="border border-gray-300 p-2 rounded pr-10 w-full"
+              value={search}
+              onChange={handleSearchChange}
+            />
+            {search && (
+              <button
+                className="absolute inset-y-0 right-0 flex items-center px-3"
+                onClick={handleClear}
+              >
+                <FaTimes className="text-gray-400" />
+              </button>
+            )}
+            {suggestions.length > 0 && (
+              <ul className="absolute top-full left-0 w-full border border-gray-300 rounded bg-white z-10 max-h-60 overflow-y-auto">
+                {suggestions.map((country) => (
+                  <li
+                    key={country.cca3}
+                    className="p-2 cursor-pointer hover:bg-gray-200"
+                    onClick={() => handleSuggestionClick(country)}
+                  >
+                    {country.name.common}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
           <button
             className="bg-blue-500 text-white p-2 rounded ml-2"
             onClick={handleSearch}
@@ -103,20 +118,6 @@ const Countries = () => {
             >
               Reset
             </button>
-          )}
-          {/* Suggestions Dropdown */}
-          {suggestions.length > 0 && (
-            <ul className="absolute top-full left-0 mt-1 w-full border border-gray-300 rounded bg-white max-h-60 overflow-y-auto z-10">
-              {suggestions.map((country) => (
-                <li
-                  key={country.cca3}
-                  className="p-2 cursor-pointer hover:bg-gray-200"
-                  onClick={() => handleSuggestionClick(country)}
-                >
-                  {country.name.common}
-                </li>
-              ))}
-            </ul>
           )}
         </div>
       </div>
