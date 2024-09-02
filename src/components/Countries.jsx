@@ -7,6 +7,7 @@ const Countries = () => {
   const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
   const [hoveredCountry, setHoveredCountry] = useState(null);
 
   useEffect(() => {
@@ -29,6 +30,26 @@ const Countries = () => {
     fetchCountries();
   }, []);
 
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearch(query);
+
+    if (query) {
+      const filteredSuggestions = countries.filter(country =>
+        country.name.common.toLowerCase().includes(query.toLowerCase())
+      );
+      setSuggestions(filteredSuggestions);
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  const handleSuggestionClick = (country) => {
+    setSearch(country.name.common);
+    setSuggestions([]);
+    setFilteredCountries([country]);
+  };
+
   const handleSearch = () => {
     const results = countries.filter(country =>
       country.name.common.toLowerCase().includes(search.toLowerCase())
@@ -38,6 +59,7 @@ const Countries = () => {
 
   const handleClear = () => {
     setSearch('');
+    setSuggestions([]);
     setFilteredCountries(countries);
   };
 
@@ -50,19 +72,19 @@ const Countries = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col justify-between mb-4 space-y-2">
         <h2 className="text-2xl font-bold">Country List</h2>
-        <div className="relative flex items-center">
+        <div className="relative w-full flex">
           <input
             type="text"
             placeholder="Search countries..."
-            className="border border-gray-300 p-2 rounded pr-10"
+            className="border border-gray-300 p-2 rounded pr-10 w-full"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleSearchChange}
           />
           {search && (
             <button
-              className="absolute inset-y-0 right-[146px] flex items-center px-3"
+              className="absolute inset-y-0 right-28 flex items-center px-3"
               onClick={handleClear}
             >
               <FaTimes className="text-gray-400" />
@@ -81,6 +103,20 @@ const Countries = () => {
             >
               Reset
             </button>
+          )}
+          {/* Suggestions Dropdown */}
+          {suggestions.length > 0 && (
+            <ul className="absolute top-full left-0 mt-1 w-full border border-gray-300 rounded bg-white max-h-60 overflow-y-auto z-10">
+              {suggestions.map((country) => (
+                <li
+                  key={country.cca3}
+                  className="p-2 cursor-pointer hover:bg-gray-200"
+                  onClick={() => handleSuggestionClick(country)}
+                >
+                  {country.name.common}
+                </li>
+              ))}
+            </ul>
           )}
         </div>
       </div>

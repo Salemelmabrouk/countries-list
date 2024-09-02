@@ -1,7 +1,6 @@
 /*index.css*/
 @import 'bootswatch/dist/lux/bootstrap.min.css';
- 
-@import 'bootswatch/dist/litera/bootstrap.min.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
